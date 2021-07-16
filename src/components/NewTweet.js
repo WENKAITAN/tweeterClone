@@ -29,7 +29,7 @@ class NewTweet extends React.Component {
                             placeholder={"what's happening?"} 
                             type="text" 
                             rows={5} 
-                            cols={50}
+                            cols={58}
                             ref={input => this.input = input} 
                             maxLength={280}/>
                             
