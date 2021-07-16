@@ -6,10 +6,10 @@ class Navigation extends React.Component {
         return(
             <Navbar bg="light" expand="lg">
             <Container>
-                <Link to="/">Home</Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
+                    <Link to="/" style={{marginRight: "15px"}}>Home</Link>
                     <Link to="/new">New Tweet</Link>
                 </Nav>
                 </Navbar.Collapse>

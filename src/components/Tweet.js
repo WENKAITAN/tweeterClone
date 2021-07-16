@@ -26,40 +26,42 @@ class Tweet extends React.Component {
         const avatarURL = users[author] && users[author]["avatarURL"] ?  users[author]["avatarURL"] : null
         const name = users[author] && users[author]["name"] ? users[author]["name"] : null
         return(
-            <Link to={`/tweet/${id}`}>
             <Container style={{marginBottom: "20px"}}>
                 <Row>
                     <Col md={{ span: 9, offset: 3 }}>
                         <Card style={{ width: '30rem' }}>
-                            <Card.Body>
-                                <img src={avatarURL} alt={"avatar"} className="avatar" />
-                                <Card.Title>{name}</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">{this.timeConverter(timestamp)}</Card.Subtitle>
-                                {tweets[replyingTo] && tweets[replyingTo].author 
-                                ? <Card.Subtitle className="mb-2 text-muted">Replying to @{tweets[replyingTo] && tweets[replyingTo].author}</Card.Subtitle> 
-                                : null 
-                                }
-                                <Card.Text>
-                                {text}
-                                </Card.Text>
+                            <Link to={`/tweet/${id}`}>
+                                <Card.Body>
+                                    <img src={avatarURL} alt={"avatar"} className="avatar" />
+                                    <Card.Title>{name}</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">{this.timeConverter(timestamp)}</Card.Subtitle>
+                                    {tweets[replyingTo] && tweets[replyingTo].author 
+                                    ? <Card.Subtitle className="mb-2 text-muted">Replying to @{tweets[replyingTo] && tweets[replyingTo].author}</Card.Subtitle> 
+                                    : null 
+                                    }
+                                    <Card.Text>
+                                    {text}
+                                    </Card.Text>
+                                                    
+                                </Card.Body>
+                            </Link>
+                            <Card.Footer className="text-muted">
                                 <span>
-                                    <button><GoReply style={{size: "20px"}}/>{replies.length > 0 ? replies.length : null}</button>
+                                    <Link to={`/tweet/${id}`}><GoReply style={{size: "20px"}}/>{replies.length > 0 ? replies.length : null}</Link>
                                     
                                 </span>
                                 
                                 <span  style={{marginLeft: "20px"}}>
                                     {likes.includes(authedUser) 
-                                    ? <button onClick={() => this.toggleLike(id, true, authedUser)}><AiFillHeart />{likes.length >0 ? likes.length : null}</button>
-                                    : <button onClick={() => this.toggleLike(id, false, authedUser)}><AiOutlineHeart /> {likes.length >0 ? likes.length : null}</button>}
+                                    ? <Link onClick={() => this.toggleLike(id, true, authedUser)}><AiFillHeart />{likes.length >0 ? likes.length : null}</Link>
+                                    : <Link onClick={() => this.toggleLike(id, false, authedUser)}><AiOutlineHeart /> {likes.length >0 ? likes.length : null}</Link>}
                                 </span>
-                                                
-                            </Card.Body>
+                            </Card.Footer>
                         </Card>
                     </Col>
                 </Row>
 
             </Container>
-            </Link>
         )
     }
 }
